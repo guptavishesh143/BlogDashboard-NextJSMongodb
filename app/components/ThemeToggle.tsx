@@ -8,11 +8,9 @@ export default function ThemeToggle() {
   // ✅ Sync with the actual DOM on mount
   useEffect(() => {
     if (dark) {
-      document.body.classList.add('bg-gray-900', 'text-white');
-      document.body.classList.remove('bg-gray-50', 'text-gray-900');
+      document.documentElement.classList.add('dark');
     } else {
-      document.body.classList.add('bg-gray-50', 'text-gray-900');
-      document.body.classList.remove('bg-gray-900', 'text-white');
+      document.documentElement.classList.remove('dark');
     }
   }, [dark]);
 

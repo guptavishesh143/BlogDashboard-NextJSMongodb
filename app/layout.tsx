@@ -12,7 +12,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className="p-6 bg-gray-50 text-gray-900">
         <Providers>
-          <Header />
+          {/* <Header /> */}
           <main>{children}</main>
         </Providers>
       </body>

@@ -10,7 +10,11 @@ export async function GET() {
     .collection("posts")
     .find({ deleted: { $ne: true } })
     .sort({ createdAt: -1 })
-    .toArray();
+    .toArray()
+
+    
+
+
   return NextResponse.json(posts);
 }
 
@@ -28,9 +32,17 @@ export async function POST(request: Request) {
     title: String(body.title),
     body: String(body.body),
     published: Boolean(body.published ?? false),
+    category: body.category || null,
     createdAt: now,
     updatedAt: now,
+    tags:[],
+    likes:[],
+    commentsCount:0,
   };
   const result = await db.collection("posts").insertOne(newPost);
   return NextResponse.json({ ...newPost, _id: result.insertedId });
 }
+
+
+
+

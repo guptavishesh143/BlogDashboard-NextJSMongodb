@@ -42,7 +42,13 @@ export default function AuthPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
-      <div className="max-w-md w-full space-y-6 bg-white p-8 rounded-lg shadow-md">
+      <div className="max-w-md w-full space-y-6 bg-white p-8 rounded-lg shadow-md relative">
+        <button
+          onClick={() => router.push('/')}
+          className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 md:hidden"
+        >
+          ✕
+        </button>
         <h2 className="text-2xl font-bold text-center text-gray-800">
           {mode === "login" ? "Login" : "Create Account"}
         </h2>

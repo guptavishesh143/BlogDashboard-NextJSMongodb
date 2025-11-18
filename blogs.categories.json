@@ -1,0 +1,792 @@
+[{
+  "_id": {
+    "$oid": "691b249f05f0016f90a0eae9"
+  },
+  "name": "Software Development",
+  "slug": "software-development",
+  "children": [
+    {
+      "name": "Web Development",
+      "slug": "web-development",
+      "children": [
+        {
+          "name": "Frontend",
+          "slug": "frontend"
+        },
+        {
+          "name": "Backend",
+          "slug": "backend"
+        },
+        {
+          "name": "Full-Stack",
+          "slug": "full-stack"
+        },
+        {
+          "name": "Jamstack",
+          "slug": "jamstack"
+        },
+        {
+          "name": "Serverless",
+          "slug": "serverless"
+        }
+      ]
+    },
+    {
+      "name": "Mobile Development",
+      "slug": "mobile-development",
+      "children": [
+        {
+          "name": "iOS",
+          "slug": "ios"
+        },
+        {
+          "name": "Android",
+          "slug": "android"
+        },
+        {
+          "name": "Cross-Platform",
+          "slug": "cross-platform"
+        },
+        {
+          "name": "React Native",
+          "slug": "react-native"
+        },
+        {
+          "name": "Flutter",
+          "slug": "flutter"
+        }
+      ]
+    },
+    {
+      "name": "API & Integrations",
+      "slug": "api-integrations",
+      "children": [
+        {
+          "name": "REST APIs",
+          "slug": "rest-apis"
+        },
+        {
+          "name": "GraphQL",
+          "slug": "graphql"
+        },
+        {
+          "name": "Webhooks",
+          "slug": "webhooks"
+        },
+        {
+          "name": "API Design",
+          "slug": "api-design"
+        },
+        {
+          "name": "API Security",
+          "slug": "api-security"
+        }
+      ]
+    },
+    {
+      "name": "Programming Languages",
+      "slug": "programming-languages",
+      "children": [
+        {
+          "name": "JavaScript",
+          "slug": "javascript"
+        },
+        {
+          "name": "Python",
+          "slug": "python"
+        },
+        {
+          "name": "Go",
+          "slug": "go"
+        },
+        {
+          "name": "Rust",
+          "slug": "rust"
+        },
+        {
+          "name": "TypeScript",
+          "slug": "typescript"
+        }
+      ]
+    },
+    {
+      "name": "Testing & QA",
+      "slug": "testing-qa",
+      "children": [
+        {
+          "name": "Unit Testing",
+          "slug": "unit-testing"
+        },
+        {
+          "name": "Integration Testing",
+          "slug": "integration-testing"
+        },
+        {
+          "name": "E2E Testing",
+          "slug": "e2e-testing"
+        },
+        {
+          "name": "Test Automation",
+          "slug": "test-automation"
+        },
+        {
+          "name": "TDD",
+          "slug": "tdd"
+        }
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "691b249f05f0016f90a0eaea"
+  },
+  "name": "DevOps & Infrastructure",
+  "slug": "devops-infrastructure",
+  "children": [
+    {
+      "name": "Deployment",
+      "slug": "deployment",
+      "children": [
+        {
+          "name": "CI/CD",
+          "slug": "ci-cd"
+        },
+        {
+          "name": "Containers",
+          "slug": "containers"
+        },
+        {
+          "name": "Kubernetes",
+          "slug": "kubernetes"
+        },
+        {
+          "name": "Release Management",
+          "slug": "release-management"
+        },
+        {
+          "name": "Blue/Green & Canary",
+          "slug": "blue-green-canary"
+        }
+      ]
+    },
+    {
+      "name": "Cloud Platforms",
+      "slug": "cloud-platforms",
+      "children": [
+        {
+          "name": "AWS",
+          "slug": "aws"
+        },
+        {
+          "name": "Azure",
+          "slug": "azure"
+        },
+        {
+          "name": "Google Cloud",
+          "slug": "google-cloud"
+        },
+        {
+          "name": "DigitalOcean",
+          "slug": "digitalocean"
+        },
+        {
+          "name": "Multi-Cloud",
+          "slug": "multi-cloud"
+        }
+      ]
+    },
+    {
+      "name": "Infrastructure as Code",
+      "slug": "infrastructure-as-code",
+      "children": [
+        {
+          "name": "Terraform",
+          "slug": "terraform"
+        },
+        {
+          "name": "Pulumi",
+          "slug": "pulumi"
+        },
+        {
+          "name": "CloudFormation",
+          "slug": "cloudformation"
+        },
+        {
+          "name": "Ansible",
+          "slug": "ansible"
+        },
+        {
+          "name": "CI Pipelines",
+          "slug": "ci-pipelines"
+        }
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "691b249f05f0016f90a0eaeb"
+  },
+  "name": "Artificial Intelligence",
+  "slug": "artificial-intelligence",
+  "children": [
+    {
+      "name": "Machine Learning",
+      "slug": "machine-learning",
+      "children": [
+        {
+          "name": "Supervised Learning",
+          "slug": "supervised-learning"
+        },
+        {
+          "name": "Unsupervised Learning",
+          "slug": "unsupervised-learning"
+        },
+        {
+          "name": "Reinforcement Learning",
+          "slug": "reinforcement-learning"
+        },
+        {
+          "name": "Model Deployment",
+          "slug": "model-deployment"
+        },
+        {
+          "name": "Feature Engineering",
+          "slug": "feature-engineering"
+        }
+      ]
+    },
+    {
+      "name": "Deep Learning",
+      "slug": "deep-learning",
+      "children": [
+        {
+          "name": "Neural Networks",
+          "slug": "neural-networks"
+        },
+        {
+          "name": "CNNs",
+          "slug": "convolutional-neural-networks"
+        },
+        {
+          "name": "RNNs",
+          "slug": "recurrent-neural-networks"
+        },
+        {
+          "name": "Transformers",
+          "slug": "transformers"
+        },
+        {
+          "name": "GANs",
+          "slug": "gans"
+        }
+      ]
+    },
+    {
+      "name": "NLP & Language Models",
+      "slug": "nlp-language-models",
+      "children": [
+        {
+          "name": "Text Classification",
+          "slug": "text-classification"
+        },
+        {
+          "name": "Summarization",
+          "slug": "summarization"
+        },
+        {
+          "name": "Chatbots",
+          "slug": "chatbots"
+        },
+        {
+          "name": "Large Language Models",
+          "slug": "large-language-models"
+        },
+        {
+          "name": "Speech Recognition",
+          "slug": "speech-recognition"
+        }
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "691b249f05f0016f90a0eaec"
+  },
+  "name": "Data Engineering & Analytics",
+  "slug": "data-engineering-analytics",
+  "children": [
+    {
+      "name": "Data Engineering",
+      "slug": "data-engineering",
+      "children": [
+        {
+          "name": "ETL",
+          "slug": "etl"
+        },
+        {
+          "name": "Data Pipelines",
+          "slug": "data-pipelines"
+        },
+        {
+          "name": "Streaming",
+          "slug": "streaming"
+        },
+        {
+          "name": "Data Lakes",
+          "slug": "data-lakes"
+        },
+        {
+          "name": "Big Data",
+          "slug": "big-data"
+        }
+      ]
+    },
+    {
+      "name": "Data Science",
+      "slug": "data-science",
+      "children": [
+        {
+          "name": "Exploratory Data Analysis",
+          "slug": "exploratory-data-analysis"
+        },
+        {
+          "name": "Statistical Modeling",
+          "slug": "statistical-modeling"
+        },
+        {
+          "name": "Time Series",
+          "slug": "time-series"
+        },
+        {
+          "name": "Anomaly Detection",
+          "slug": "anomaly-detection"
+        },
+        {
+          "name": "A/B Testing",
+          "slug": "a-b-testing"
+        }
+      ]
+    },
+    {
+      "name": "Business Intelligence",
+      "slug": "business-intelligence",
+      "children": [
+        {
+          "name": "Dashboards",
+          "slug": "dashboards"
+        },
+        {
+          "name": "Data Viz",
+          "slug": "data-visualization"
+        },
+        {
+          "name": "Looker & Tableau",
+          "slug": "looker-tableau"
+        },
+        {
+          "name": "Metrics & KPIs",
+          "slug": "metrics-kpis"
+        },
+        {
+          "name": "Data Governance",
+          "slug": "data-governance"
+        }
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "691b249f05f0016f90a0eaed"
+  },
+  "name": "Security & Privacy",
+  "slug": "security-privacy",
+  "children": [
+    {
+      "name": "Application Security",
+      "slug": "application-security",
+      "children": [
+        {
+          "name": "Secure Coding",
+          "slug": "secure-coding"
+        },
+        {
+          "name": "OWASP",
+          "slug": "owasp"
+        },
+        {
+          "name": "Dependency Management",
+          "slug": "dependency-management"
+        },
+        {
+          "name": "Security Testing",
+          "slug": "security-testing"
+        },
+        {
+          "name": "Secrets Management",
+          "slug": "secrets-management"
+        }
+      ]
+    },
+    {
+      "name": "Network & Infrastructure Security",
+      "slug": "network-infrastructure-security",
+      "children": [
+        {
+          "name": "Firewalls",
+          "slug": "firewalls"
+        },
+        {
+          "name": "VPNs",
+          "slug": "vpns"
+        },
+        {
+          "name": "IDS/IPS",
+          "slug": "ids-ips"
+        },
+        {
+          "name": "Zero Trust",
+          "slug": "zero-trust"
+        }
+      ]
+    },
+    {
+      "name": "Privacy & Compliance",
+      "slug": "privacy-compliance",
+      "children": [
+        {
+          "name": "GDPR",
+          "slug": "gdpr"
+        },
+        {
+          "name": "CCPA",
+          "slug": "ccpa"
+        },
+        {
+          "name": "Data Protection",
+          "slug": "data-protection"
+        },
+        {
+          "name": "Compliance Audits",
+          "slug": "compliance-audits"
+        }
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "691b249f05f0016f90a0eaee"
+  },
+  "name": "Databases",
+  "slug": "databases",
+  "children": [
+    {
+      "name": "Relational Databases",
+      "slug": "relational-databases",
+      "children": [
+        {
+          "name": "PostgreSQL",
+          "slug": "postgresql"
+        },
+        {
+          "name": "MySQL",
+          "slug": "mysql"
+        },
+        {
+          "name": "SQLite",
+          "slug": "sqlite"
+        },
+        {
+          "name": "MariaDB",
+          "slug": "mariadb"
+        }
+      ]
+    },
+    {
+      "name": "NoSQL Databases",
+      "slug": "nosql-databases",
+      "children": [
+        {
+          "name": "MongoDB",
+          "slug": "mongodb"
+        },
+        {
+          "name": "Cassandra",
+          "slug": "cassandra"
+        },
+        {
+          "name": "DynamoDB",
+          "slug": "dynamodb"
+        },
+        {
+          "name": "Redis",
+          "slug": "redis"
+        }
+      ]
+    },
+    {
+      "name": "NewSQL & Time-Series",
+      "slug": "newsql-time-series",
+      "children": [
+        {
+          "name": "Timescale",
+          "slug": "timescale"
+        },
+        {
+          "name": "CockroachDB",
+          "slug": "cockroachdb"
+        },
+        {
+          "name": "InfluxDB",
+          "slug": "influxdb"
+        }
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "691b249f05f0016f90a0eaef"
+  },
+  "name": "Tools & Productivity",
+  "slug": "tools-productivity",
+  "children": [
+    {
+      "name": "Developer Tools",
+      "slug": "developer-tools",
+      "children": [
+        {
+          "name": "VS Code",
+          "slug": "vscode"
+        },
+        {
+          "name": "CLI Tools",
+          "slug": "cli-tools"
+        },
+        {
+          "name": "IDEs",
+          "slug": "ides"
+        },
+        {
+          "name": "Debugging",
+          "slug": "debugging"
+        }
+      ]
+    },
+    {
+      "name": "Productivity",
+      "slug": "productivity",
+      "children": [
+        {
+          "name": "Workflows",
+          "slug": "workflows"
+        },
+        {
+          "name": "Time Management",
+          "slug": "time-management"
+        },
+        {
+          "name": "Remote Work",
+          "slug": "remote-work"
+        }
+      ]
+    },
+    {
+      "name": "Collaboration",
+      "slug": "collaboration",
+      "children": [
+        {
+          "name": "Slack",
+          "slug": "slack"
+        },
+        {
+          "name": "Notion",
+          "slug": "notion"
+        },
+        {
+          "name": "Confluence",
+          "slug": "confluence"
+        }
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "691b249f05f0016f90a0eaf0"
+  },
+  "name": "Frontend Frameworks",
+  "slug": "frontend-frameworks",
+  "children": [
+    {
+      "name": "React Ecosystem",
+      "slug": "react-ecosystem",
+      "children": [
+        {
+          "name": "React",
+          "slug": "react"
+        },
+        {
+          "name": "Next.js",
+          "slug": "nextjs"
+        },
+        {
+          "name": "Gatsby",
+          "slug": "gatsby"
+        }
+      ]
+    },
+    {
+      "name": "Vue Ecosystem",
+      "slug": "vue-ecosystem",
+      "children": [
+        {
+          "name": "Vue.js",
+          "slug": "vuejs"
+        },
+        {
+          "name": "Nuxt",
+          "slug": "nuxt"
+        },
+        {
+          "name": "Vue Tooling",
+          "slug": "vue-tooling"
+        }
+      ]
+    },
+    {
+      "name": "Other Frameworks",
+      "slug": "other-frontend-frameworks",
+      "children": [
+        {
+          "name": "Svelte",
+          "slug": "svelte"
+        },
+        {
+          "name": "Angular",
+          "slug": "angular"
+        },
+        {
+          "name": "Ember",
+          "slug": "ember"
+        }
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "691b249f05f0016f90a0eaf1"
+  },
+  "name": "Web Performance",
+  "slug": "web-performance",
+  "children": [
+    {
+      "name": "Optimization",
+      "slug": "optimization",
+      "children": [
+        {
+          "name": "Lighthouse",
+          "slug": "lighthouse"
+        },
+        {
+          "name": "Critical Rendering Path",
+          "slug": "critical-rendering-path"
+        },
+        {
+          "name": "Image Optimization",
+          "slug": "image-optimization"
+        },
+        {
+          "name": "Caching Strategies",
+          "slug": "caching-strategies"
+        }
+      ]
+    },
+    {
+      "name": "Monitoring",
+      "slug": "monitoring",
+      "children": [
+        {
+          "name": "RUM",
+          "slug": "rum"
+        },
+        {
+          "name": "APM",
+          "slug": "apm"
+        },
+        {
+          "name": "Error Tracking",
+          "slug": "error-tracking"
+        }
+      ]
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "691b249f05f0016f90a0eaf2"
+  },
+  "name": "UX & Product Design",
+  "slug": "ux-product-design",
+  "children": [
+    {
+      "name": "User Research",
+      "slug": "user-research",
+      "children": [
+        {
+          "name": "Interviews",
+          "slug": "interviews"
+        },
+        {
+          "name": "Surveys",
+          "slug": "surveys"
+        },
+        {
+          "name": "Usability Testing",
+          "slug": "usability-testing"
+        }
+      ]
+    },
+    {
+      "name": "Design Systems",
+      "slug": "design-systems",
+      "children": [
+        {
+          "name": "Component Design",
+          "slug": "component-design"
+        },
+        {
+          "name": "Tokens & Theming",
+          "slug": "tokens-theming"
+        },
+        {
+          "name": "Accessibility",
+          "slug": "accessibility"
+        }
+      ]
+    },
+    {
+      "name": "Product Management",
+      "slug": "product-management",
+      "children": [
+        {
+          "name": "Roadmaps",
+          "slug": "roadmaps"
+        },
+        {
+          "name": "Prioritization",
+          "slug": "prioritization"
+        },
+        {
+          "name": "Metrics",
+          "slug": "metrics"
+        }
+      ]
+    }
+  ]
+}]
