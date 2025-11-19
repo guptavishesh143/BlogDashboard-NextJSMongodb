@@ -22,6 +22,7 @@ interface Post {
   image?: string;
   category?: string;
   likes?: string[];
+  likesCount?: number;
 }
 
 export default function HomePage({
@@ -170,8 +171,8 @@ export default function HomePage({
                   entityId={post._id}
                   entityType="post"
                   userId={userId}
-                  initialLikesCount={post.likes?.length || 0}
-                  initialIsLiked={post.likes?.includes(userId) || false}
+                  initialLikesCount={post.likesCount || 0}
+                  initialIsLiked={false}
                 />
               </div>
             </div>

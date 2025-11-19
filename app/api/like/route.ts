@@ -1,6 +1,58 @@
 import { connectDB } from "@/lib/mongodb";
-import { NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
+import { NextResponse } from "next/server";
+
+export async function GET(request: Request) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const entityId = searchParams.get("entityId");
+    const entityType = searchParams.get("entityType");
+    const page = parseInt(searchParams.get("page") || "1");
+    const limit = parseInt(searchParams.get("limit") || "10");
+
+    if (!entityId || !entityType) {
+      return NextResponse.json(
+        { error: "entityId and entityType are required" },
+        { status: 400 }
+      );
+    }
+
+    const db = await connectDB();
+    const skip = (page - 1) * limit;
+
+    const likes = await db
+      .collection("likes")
+      .find({
+        entityId: new ObjectId(entityId),
+        entityType: entityType.toLowerCase(),
+      })
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit)
+      .toArray();
+
+    const totalLikes = await db.collection("likes").countDocuments({
+      entityId: new ObjectId(entityId),
+      entityType: entityType.toLowerCase(),
+    });
+
+    return NextResponse.json({
+      likes,
+      pagination: {
+        page,
+        limit,
+        total: totalLikes,
+        hasMore: skip + likes.length < totalLikes,
+      },
+    });
+  } catch (error) {
+    console.error("Error fetching likes:", error);
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 }
+    );
+  }
+}
 
 export async function POST(request: Request) {
   try {
@@ -15,30 +67,52 @@ export async function POST(request: Request) {
     }
 
     const db = await connectDB();
-    const collection = entityType === 'post' ? 'posts' : 'comments'; // assuming only posts and comments for now
+    const now = new Date().toISOString();
 
-    const update = action === 'like'
-      ? { $addToSet: { likes: userId } }
-      : { $pull: { likes: userId } };
+    if (action === 'like') {
+      // Check if like already exists
+      const existingLike = await db.collection("likes").findOne({
+        entityId: new ObjectId(entityId),
+        entityType: entityType.toLowerCase(),
+        userId: userId,
+      });
 
-    const result = await db.collection(collection).updateOne(
-      { _id: new ObjectId(entityId) },
-      update
-    );
+      if (existingLike) {
+        return NextResponse.json({ error: "Already liked" }, { status: 400 });
+      }
 
-    if (result.matchedCount === 0) {
-      return NextResponse.json({ error: "Entity not found" }, { status: 404 });
+      // Create new like
+      const newLike = {
+        entityId: new ObjectId(entityId),
+        entityType: entityType.toLowerCase(),
+        userId: userId,
+        createdAt: now,
+        updatedAt: now,
+      };
+
+      await db.collection("likes").insertOne(newLike);
+    } else {
+      // Unlike - remove the like
+      const result = await db.collection("likes").deleteOne({
+        entityId: new ObjectId(entityId),
+        entityType: entityType.toLowerCase(),
+        userId: userId,
+      });
+
+      if (result.deletedCount === 0) {
+        return NextResponse.json({ error: "Like not found" }, { status: 404 });
+      }
     }
 
     // Get updated likes count
-    const updatedEntity = await db.collection(collection).findOne(
-      { _id: new ObjectId(entityId) },
-      { projection: { likes: 1 } }
-    );
+    const likesCount = await db.collection("likes").countDocuments({
+      entityId: new ObjectId(entityId),
+      entityType: entityType.toLowerCase(),
+    });
 
     return NextResponse.json({
       success: true,
-      likesCount: updatedEntity?.likes?.length || 0,
+      likesCount,
       isLiked: action === 'like'
     });
   } catch (error) {

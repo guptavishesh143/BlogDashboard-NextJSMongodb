@@ -73,11 +73,10 @@ export async function POST(request: Request) {
     const newComment = {
       entityId: new ObjectId(entityId),
       entityType: entityType?.toLowerCase(),
-      userId: new ObjectId(userId),
+      userId: userId,
       text,
       createdAt: now,
       updatedAt: now,
-      likes: [],
       parentId: parentId ? new ObjectId(parentId) : null, // parent comment
     };
 

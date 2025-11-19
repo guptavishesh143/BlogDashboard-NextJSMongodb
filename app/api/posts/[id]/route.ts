@@ -22,7 +22,16 @@ export async function GET(
       return NextResponse.json({ error: "Post not found" }, { status: 404 });
     }
 
-    return NextResponse.json(postDetails);
+    // Get likes count for this post
+    const likesCount = await db.collection("likes").countDocuments({
+      entityId: new ObjectId(id),
+      entityType: "post",
+    });
+
+    return NextResponse.json({
+      ...postDetails,
+      likesCount,
+    });
   } catch (error) {
     console.error("Error fetching post:", error);
     return NextResponse.json(

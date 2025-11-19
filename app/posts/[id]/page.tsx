@@ -69,8 +69,8 @@ export default async function PostPage({
                   entityId={id}
                   entityType="post"
                   userId={userId}
-                  initialLikesCount={post.likes?.length || 0}
-                  initialIsLiked={post.likes?.includes(userId) || false}
+                  initialLikesCount={post.likesCount || 0}
+                  initialIsLiked={false}
                 />
                 <button className="flex items-center gap-2 text-gray-600 hover:text-blue-500 transition-colors">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">

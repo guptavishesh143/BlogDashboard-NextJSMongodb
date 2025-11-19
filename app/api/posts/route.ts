@@ -24,8 +24,22 @@ export async function GET(request: Request) {
       .limit(limit)
       .toArray();
 
+    // Add likes count to each post
+    const postsWithLikes = await Promise.all(
+      posts.map(async (post) => {
+        const likesCount = await db.collection("likes").countDocuments({
+          entityId: post._id,
+          entityType: "post",
+        });
+        return {
+          ...post,
+          likesCount,
+        };
+      })
+    );
+
     return NextResponse.json({
-      data: posts,
+      data: postsWithLikes,
       pagination: {
         total,
         page,
