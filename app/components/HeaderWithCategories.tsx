@@ -1,3 +1,5 @@
+'use client';
+
 import Link from "next/link";
 
 interface Category {
@@ -10,9 +12,10 @@ interface Category {
 interface HeaderWithCategoriesProps {
   allCategories: Category[];
   selectedCategory?: string;
+  onCategoryChange?: (category: string) => void;
 }
 
-export default function HeaderWithCategories({ allCategories, selectedCategory }: HeaderWithCategoriesProps) {
+export default function HeaderWithCategories({ allCategories, selectedCategory, onCategoryChange }: HeaderWithCategoriesProps) {
   return (
     <>
       {/* Header */}
@@ -73,6 +76,25 @@ export default function HeaderWithCategories({ allCategories, selectedCategory }
             <div className="flex space-x-4 sm:space-x-6 lg:space-x-8 overflow-x-auto">
               {allCategories.map((category) => {
                 const isSelected = category._id === 'all' ? !selectedCategory : selectedCategory === category.slug;
+                const categorySlug = category._id === 'all' ? 'all' : category.slug;
+
+                if (onCategoryChange) {
+                  return (
+                    <button
+                      key={category.slug}
+                      onClick={() => onCategoryChange(categorySlug)}
+                      className={`px-2 sm:px-4 py-2 text-xs sm:text-sm font-medium transition-colors whitespace-nowrap ${
+                        isSelected
+                          ? "text-blue-600 border-b-2 border-blue-600"
+                          : "text-gray-600 hover:text-gray-900"
+                      }`}
+                      style={{ paddingLeft: `${category.indent * 16}px` }}
+                    >
+                      {category.name}
+                    </button>
+                  );
+                }
+
                 return (
                   <Link
                     key={category.slug}

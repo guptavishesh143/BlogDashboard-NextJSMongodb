@@ -7,6 +7,8 @@ export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
     const entityId = searchParams.get("entityId");
     const entityType = searchParams.get("entityType");
+    const page = parseInt(searchParams.get("page") || "1");
+    const limit = parseInt(searchParams.get("limit") || "10");
 
     if (!entityId || !entityType) {
       return NextResponse.json(
@@ -16,6 +18,7 @@ export async function GET(request: Request) {
     }
 
     const db = await connectDB();
+    const skip = (page - 1) * limit;
 
     const comments = await db
       .collection("comments")
@@ -24,9 +27,24 @@ export async function GET(request: Request) {
         entityType: entityType.toLowerCase(),
       })
       .sort({ createdAt: 1 })
+      .skip(skip)
+      .limit(limit)
       .toArray();
 
-    return NextResponse.json(comments);
+    const totalComments = await db.collection("comments").countDocuments({
+      entityId: new ObjectId(entityId),
+      entityType: entityType.toLowerCase(),
+    });
+
+    return NextResponse.json({
+      comments,
+      pagination: {
+        page,
+        limit,
+        total: totalComments,
+        hasMore: skip + comments.length < totalComments,
+      },
+    });
   } catch (error) {
     console.error("Error fetching comments:", error);
     return NextResponse.json(
@@ -41,6 +59,7 @@ export async function POST(request: Request) {
     const { entityId, entityType, userId, text, parentId } =
       await request.json();
 
+      console.log('entityType',entityType.toLowerCase())
     if (!entityId || !entityType || !text) {
       return NextResponse.json(
         { error: "entityId, entityType, and text are required" },
@@ -53,7 +72,7 @@ export async function POST(request: Request) {
 
     const newComment = {
       entityId: new ObjectId(entityId),
-      entityType: entityType.toLoweCase(),
+      entityType: entityType?.toLowerCase(),
       userId: new ObjectId(userId),
       text,
       createdAt: now,
@@ -64,11 +83,13 @@ export async function POST(request: Request) {
 
     const result = await db.collection("comments").insertOne(newComment);
 
+    // console.log('result',result)
     return NextResponse.json({
       _id: result.insertedId,
       ...newComment,
     });
   } catch (error) {
+    console.log('error',error)
     return NextResponse.json({
       error,
     });

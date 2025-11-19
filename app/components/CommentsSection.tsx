@@ -26,24 +26,45 @@ export default function CommentsSection({
 }: CommentsSectionProps) {
   const [comments, setComments] = useState<Comment[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadingMore, setLoadingMore] = useState(false);
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(false);
 
-  const fetchComments = async () => {
+  const fetchComments = async (pageNum = 1, append = false) => {
     try {
-      const res = await fetch(`/api/comments?entityId=${entityId}&entityType=${entityType}`);
+      const res = await fetch(`/api/comments?entityId=${entityId}&entityType=${entityType}&page=${pageNum}&limit=10`);
       if (res.ok) {
         const data = await res.json();
-        setComments(data);
+        if (append) {
+          setComments(prev => [...prev, ...data.comments]);
+        } else {
+          setComments(data.comments);
+        }
+        setHasMore(data.pagination.hasMore);
       }
     } catch (err) {
       console.error('Failed to fetch comments', err);
     } finally {
       setLoading(false);
+      setLoadingMore(false);
     }
   };
 
   useEffect(() => {
-    fetchComments();
+    setComments([]);
+    setPage(1);
+    setLoading(true);
+    fetchComments(1, false);
   }, [entityId, entityType]);
+
+  const loadMoreComments = () => {
+    if (!loadingMore && hasMore) {
+      setLoadingMore(true);
+      const nextPage = page + 1;
+      setPage(nextPage);
+      fetchComments(nextPage, true);
+    }
+  };
 
   const topLevelComments = comments.filter((c) => !c.parentId);
   const repliesMap: { [key: string]: Comment[] } = {};
@@ -85,10 +106,26 @@ export default function CommentsSection({
             entityId={entityId}
             entityType={entityType}
             userId={userId}
-            onCommentAdded={fetchComments}
+            onCommentAdded={() => {
+              setComments([]);
+              setPage(1);
+              setLoading(true);
+              fetchComments(1, false);
+            }}
             replies={repliesMap[comment._id] || []}
           />
         ))}
+        {hasMore && (
+          <div className="text-center">
+            <button
+              onClick={loadMoreComments}
+              disabled={loadingMore}
+              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {loadingMore ? 'Loading...' : 'Load More Comments'}
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
