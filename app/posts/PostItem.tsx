@@ -11,6 +11,7 @@ interface Post {
   createdAt?: string;
   likes?: string[];
   likesCount?: number;
+  commentsCount?: number;
 }
 
 interface PostItemProps {
@@ -27,6 +28,20 @@ export default function PostItem({ post }: PostItemProps) {
         <Link href={`/posts/${post._id}`}>
           <h2 className="text-3xl font-bold mb-4 hover:text-blue-600 transition-colors text-gray-900 leading-tight">{post.title}</h2>
         </Link>
+        <div className="flex items-center gap-4 mb-4">
+          <button className="flex items-center gap-2 text-gray-600 hover:text-red-500 transition-colors">
+            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
+            </svg>
+            <span className="font-medium">{post.likesCount || post.likes?.length || 0}</span>
+          </button>
+          <button className="flex items-center gap-2 text-gray-600 hover:text-blue-500 transition-colors">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+            </svg>
+            <span className="font-medium">{post.commentsCount || 0}</span>
+          </button>
+        </div>
         <p className="text-gray-700 mb-6 leading-relaxed text-lg">{excerpt}</p>
         <div className="flex items-center justify-between pt-6 border-t border-gray-200">
           <div className="flex items-center gap-4">
@@ -46,16 +61,8 @@ export default function PostItem({ post }: PostItemProps) {
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-4">
-            <button className="flex items-center gap-2 text-gray-600 hover:text-red-500 transition-colors">
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
-              </svg>
-              <span className="font-medium">{post.likesCount || post.likes?.length || 0}</span>
-            </button>
-            <div className="text-gray-400 text-sm">
-              {Math.ceil((content || '').length / 200)} min read
-            </div>
+          <div className="text-gray-400 text-sm">
+            {Math.ceil((content || '').length / 200)} min read
           </div>
         </div>
       </div>

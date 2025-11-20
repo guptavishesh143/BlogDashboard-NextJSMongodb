@@ -1,0 +1,8 @@
+// $match - syntax and example
+// $addFields -
+// $dateFromString -
+// $project -
+// $count -
+// toArray() -  aggregate - give cursor ( ) so to convert into redable format
+//The result exceeds your environment’s response size (approx 16MB)
+// dateDiff
